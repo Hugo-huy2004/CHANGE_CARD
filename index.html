@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHANGE - Thư gửi em</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Indie+Flower&display=swap');
+
+        :root {
+            --primary-red: #ec003f;
+            --pastel-pink: #ffe0e6;
+            --pastel-blue: #e0f2f7;
+            --pastel-green: #e0f7e9;
+            --pastel-yellow: #fffdd0;
+            --pastel-purple: #f5e0ff;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --border-radius-soft: 1.5rem; /* Tăng độ bo góc để dễ thương hơn */
+            --box-shadow-soft: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            font-family: 'Comfortaa', cursive;
+            background: linear-gradient(135deg, var(--pastel-blue) 0%, var(--pastel-pink) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden; /* Tránh scroll ngang */
+            position: relative;
+        }
+
+        /* Hiệu ứng bong bóng/mây trôi */
+        .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            opacity: 0;
+            animation: floatBubble 15s infinite ease-in-out;
+            pointer-events: none;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+        }
+        .bubble:nth-child(1) { width: 60px; height: 60px; left: 10%; top: 20%; animation-delay: 0s; background: var(--pastel-yellow); }
+        .bubble:nth-child(2) { width: 80px; height: 80px; left: 80%; top: 50%; animation-delay: 3s; background: var(--pastel-green); }
+        .bubble:nth-child(3) { width: 45px; height: 45px; left: 30%; top: 80%; animation-delay: 6s; background: var(--pastel-blue); }
+        .bubble:nth-child(4) { width: 100px; height: 100px; left: 50%; top: 10%; animation-delay: 9s; background: var(--pastel-pink); }
+        .bubble:nth-child(5) { width: 70px; height: 70px; left: 5%; top: 60%; animation-delay: 12s; background: var(--pastel-purple); }
+
+        @keyframes floatBubble {
+            0% { transform: translateY(0) scale(1); opacity: 0; }
+            50% { transform: translateY(-50px) scale(1.1); opacity: 1; }
+            100% { transform: translateY(0) scale(1); opacity: 0; }
+        }
+
+        .letter-container {
+            background: white;
+            max-width: 750px; /* Rộng hơn để dễ trang trí */
+            padding: 3.5rem 4rem;
+            margin: 2rem;
+            border-radius: var(--border-radius-soft);
+            box-shadow: var(--box-shadow-soft);
+            position: relative;
+            z-index: 1; /* Đảm bảo nằm trên các hiệu ứng */
+            overflow: hidden; /* Giữ các trang trí nhỏ trong khung */
+        }
+
+        .header-title {
+            font-family: 'Comfortaa', cursive;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary-red);
+            text-align: center;
+            letter-spacing: 0.4rem;
+            margin-bottom: 2.5rem;
+            text-shadow: 2px 2px var(--pastel-pink); /* Hiệu ứng đổ bóng nhẹ */
+        }
+
+        .salutation {
+            font-family: 'Indie Flower', cursive;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-red);
+            text-align: center;
+        }
+
+        .content {
+            font-size: 1.05rem;
+            text-align: justify;
+            font-weight: 400;
+            color: var(--text-dark);
+        }
+
+        .section-title {
+            font-family: 'Comfortaa', cursive;
+            color: var(--primary-red);
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 35px; /* Tạo khoảng trống cho icon */
+        }
+
+        .section-title::before { /* Icon hoạt hình nhỏ trước tiêu đề */
+            content: ' ';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 25px;
+            height: 25px;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        /* Các icon hoạt hình khác nhau cho từng phần */
+        .section-title.dịu-dàng::before { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ec003f"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.47-7-7.17 0-4.04 3.09-7.31 7-7.68v14.85zM13 4.07c3.95.49 7 3.47 7 7.17 0 4.04-3.09 7.31-7 7.68V4.07z"/></svg>'); }
+        .section-title.sàng-lọc::before { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ec003f"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>'); }
+        .section-title.trái-tim::before { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ec003f"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'); }
+
+
+        .footer {
+            margin-top: 3.5rem;
+            text-align: right;
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+
+        .signature {
+            font-family: 'Indie Flower', cursive;
+            font-size: 2.5rem;
+            color: var(--primary-red);
+            margin-top: 0.8rem;
+            line-height: 1;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+        }
+
+        strong {
+            color: var(--primary-red);
+            font-weight: 700;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .letter-container {
+                padding: 2rem;
+            }
+            .header-title {
+                font-size: 2.8rem;
+            }
+            .salutation {
+                font-size: 1.3rem;
+            }
+            .section-title {
+                font-size: 1.1rem;
+            }
+            .signature {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .letter-container {
+                padding: 1.5rem;
+                margin: 1rem;
+            }
+            .header-title {
+                font-size: 2rem;
+            }
+            .salutation {
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 1rem;
+                padding-left: 30px;
+            }
+            .section-title::before {
+                width: 20px;
+                height: 20px;
+            }
+            .content {
+                font-size: 0.95rem;
+            }
+            .signature {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+
+    <div class="letter-container">
+        <h1 class="header-title">CHANGE</h1>
+
+        <div class="salutation">Bạn thân mến,</div>
+
+        <div class="content">
+            <p>Có lẽ những dòng này hơi khác với cách anh em mình vẫn hay đùa giỡn hằng ngày. Nhưng ở tuổi 17 — cái ngưỡng cửa mà mọi thứ đều đang chuyển mình mạnh mẽ — tôi muốn dành cho bạn một điều gì đó thật đặc biệt. Không phải là một món quà xa xỉ, mà là một hành trình để bạn tìm thấy chính mình, tự do và bình yên hơn.</p>
+            
+            <p>Bộ thẻ <strong>CHANGE</strong> này ra đời từ tất cả sự quan tâm mà tôi dành cho bạn. Với tôi, bạn không chỉ là một người em, mà còn là người bạn thân nhất, là gia đình mà tôi luôn trân trọng. Tôi làm bộ thẻ này để chúng ta cùng đi qua 21 ngày — một khoảng thời gian đủ ngắn để bắt đầu, nhưng đủ dài để nhận ra ai thực sự quan trọng trong cuộc đời mình.</p>
+
+            <div class="section-title dịu-dàng">Bắt đầu ngày mới bằng sự dịu dàng</div>
+            <p>Tâm lý học nói rằng 5 phút đầu tiên sau khi thức dậy sẽ quyết định "màu sắc" cho cả ngày của bạn. Thay vì vội vã cầm điện thoại để bị cuốn vào những ồn ào ngoài kia, bạn hãy dành cho mình một khoảng lặng nhỏ. Hãy rút một lá bài bất kỳ như một lời nhắn gửi từ tâm giao, mang nó theo trong tâm trí để dẫn dắt bạn qua những va chạm của ngày dài. Đó là cách bạn học làm chủ trái tim mình.</p>
+
+            <div class="section-title sàng-lọc">Hành trình sàng lọc và quay về</div>
+            <p>21 ngày này là lời mời gọi để bạn học cách "dọn dẹp" lại khu vườn tâm hồn: Can đảm buông tay trước những mối quan hệ độc hại, những người chỉ khiến bạn thấy mình tệ đi. Đừng sợ cô đơn, vì chỉ khi bỏ lại những gì không xứng đáng, bạn mới có chỗ cho những điều tuyệt vời hơn.</p>
+            <p>Thiết lập ranh giới để bạn hiểu rằng yêu thương người khác không có nghĩa là để họ bước qua sự tự tôn của mình. Bạn quý giá, và bạn có quyền được tôn trọng. Sau tất cả những sàng lọc ngoài kia, bạn sẽ nhận ra ai mới là người thực sự đứng đợi mình. Hạnh phúc đích thực đôi khi chỉ là một bữa cơm ấm áp, một lời hỏi thăm chân thành dưới mái nhà này.</p>
+
+            <div class="section-title trái-tim">Lời từ trái tim người Anh</div>
+            <p>Bạn biết không, dù cuộc đời có xoay vần thế nào, tôi vẫn luôn ở đây — vừa là một người anh bảo bọc, vừa là một người bạn sẵn sàng lắng nghe bạn. Những lá bài này chứa đựng cả những bài học, những chiêm nghiệm và cả những lời nguyện chúc mà tôi dành cho bạn.</p>
+            <p>Tôi mong sau 21 ngày này, bạn sẽ thấy mình nhẹ lòng hơn, biết trân trọng chính mình và nhận ra rằng: Giữa thế giới rộng lớn, bạn luôn có một điểm tựa vững chãi, một gia đình luôn tự hào vì bạn.</p>
+        </div>
+
+        <div class="footer">
+            <div>Thương bạn rất nhiều,</div>
+            <div class="signature">Hugo Wishpax</div>
+        </div>
+    </div>
+
+</body>
+</html>
